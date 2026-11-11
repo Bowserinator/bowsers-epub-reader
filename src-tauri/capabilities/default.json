@@ -1,0 +1,7 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "default",
+  "description": "Main reader window: core IPC plus a native open dialog (used only for StarDict import).",
+  "windows": ["main"],
+  "permissions": ["core:default", "dialog:allow-open"]
+}

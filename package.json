@@ -1,0 +1,41 @@
+{
+  "name": "bowsers-epub-reader",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "packageManager": "pnpm@9.15.0",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "dev": "vite --port 1420 --strictPort",
+    "build": "vite build",
+    "check": "svelte-check --tsconfig ./tsconfig.json",
+    "test": "vitest run",
+    "tauri": "tauri",
+    "check:version": "node scripts/check-version.mjs",
+    "sync:version": "node scripts/check-version.mjs --write"
+  },
+  "dependencies": {
+    "@fontsource/ibm-plex-sans": "5.1.1",
+    "@fontsource/noto-sans": "5.1.1",
+    "@fontsource/noto-sans-mono": "5.1.1",
+    "@fontsource/noto-serif": "5.1.1",
+    "@tauri-apps/api": "2.1.1",
+    "@tauri-apps/plugin-dialog": "2.2.0",
+    "carbon-icons-svelte": "13.3.0",
+    "dompurify": "3.2.3",
+    "epubjs": "0.3.93",
+    "marked": "15.0.4",
+    "zod": "3.24.1"
+  },
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "5.0.3",
+    "@tauri-apps/cli": "2.1.0",
+    "@tsconfig/svelte": "5.0.4",
+    "jsdom": "25.0.1",
+    "svelte": "5.16.0",
+    "svelte-check": "4.1.1",
+    "typescript": "5.7.2",
+    "vite": "6.0.7",
+    "vitest": "2.1.8"
+  }
+}

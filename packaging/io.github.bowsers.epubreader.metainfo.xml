@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>io.github.bowsers.epubreader</id>
+  <name>Bowser's Epub Reader</name>
+  <summary>A single-book EPUB reader</summary>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>MIT</project_license>
+  <description>
+    <p>Read one EPUB at a time with four reading modes, chapter-aware progress, full-book search, highlights, bookmarks and offline StarDict dictionaries. No library, no cloud, no telemetry.</p>
+  </description>
+  <launchable type="desktop-id">io.github.bowsers.epubreader.desktop</launchable>
+  <provides><mediatype>application/epub+zip</mediatype></provides>
+  <content_rating type="oars-1.1" />
+  <releases>
+    <release version="0.1.0" date="2026-11-09" />
+  </releases>
+</component>

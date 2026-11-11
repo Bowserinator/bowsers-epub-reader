@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Bowser's Epub Reader
+Comment=Read an EPUB book
+Exec=bowsers_epub_reader %f
+Icon=io.github.bowsers.epubreader
+MimeType=application/epub+zip;
+Categories=Office;Viewer;
+Terminal=false

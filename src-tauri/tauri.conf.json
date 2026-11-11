@@ -1,0 +1,57 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "Bowser’s Epub Reader",
+  "version": "0.1.0",
+  "identifier": "io.github.bowsers.epubreader",
+  "build": {
+    "beforeDevCommand": "pnpm dev",
+    "devUrl": "http://localhost:1420",
+    "beforeBuildCommand": "pnpm build",
+    "frontendDist": "../dist"
+  },
+  "app": {
+    "windows": [
+      {
+        "label": "main",
+        "title": "Bowser's Epub Reader",
+        "width": 1200,
+        "height": 850,
+        "minWidth": 560,
+        "minHeight": 480,
+        "decorations": true,
+        "visible": false
+      }
+    ],
+    "security": {
+      "csp": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' blob:; img-src 'self' data: blob:; font-src 'self' data: blob:; media-src 'none'; object-src 'none'; frame-src blob: about:; child-src blob: about:; connect-src 'self' ipc: http://ipc.localhost data: blob:"
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": ["deb", "rpm", "nsis"],
+    "category": "Productivity",
+    "shortDescription": "Simple EPUB reader",
+    "copyright": "2026 (c) Bowserinator",
+    "icon": ["icons/32x32.png", "icons/128x128.png", "icons/128x128@2x.png", "icons/icon.ico"],
+    "windows": {
+      "webviewInstallMode": { "type": "downloadBootstrapper", "silent": true },
+      "nsis": { "installMode": "both", "displayLanguageSelector": false }
+    },
+    "linux": {
+      "deb": {
+        "depends": ["libwebkit2gtk-4.1-0", "libgtk-3-0", "libfontconfig1"],
+        "files": {
+          "/usr/share/applications/io.github.bowsers.epubreader.desktop": "../packaging/io.github.bowsers.epubreader.desktop",
+          "/usr/share/metainfo/io.github.bowsers.epubreader.metainfo.xml": "../packaging/io.github.bowsers.epubreader.metainfo.xml"
+        }
+      },
+      "rpm": {
+        "depends": ["webkit2gtk4.1", "gtk3", "fontconfig"],
+        "files": {
+          "/usr/share/applications/io.github.bowsers.epubreader.desktop": "../packaging/io.github.bowsers.epubreader.desktop",
+          "/usr/share/metainfo/io.github.bowsers.epubreader.metainfo.xml": "../packaging/io.github.bowsers.epubreader.metainfo.xml"
+        }
+      }
+    }
+  }
+}
