@@ -53,6 +53,9 @@ export function highlightFill(color: string): string {
 export const MIN_SPREAD_WIDTH = 760;
 
 const QUOTE_CONTEXT_CHARS = 32;
+const SETTLE_MS = 150;
+const LAYOUT_WAIT_MS = 50;
+const LAYOUT_WAIT_TRIES = 20;
 
 export interface HighlightPiece { cfiRange: string; text: string; prefix: string; suffix: string }
 
@@ -93,6 +96,7 @@ export class ReaderEngine {
   private ro?: ResizeObserver;
   private destroyed = false;
   private markTimer?: number;
+  private settleTimer?: number;
   private hoverCfi: string | null = null;
 
   constructor(h: EngineHandlers) { this.h = h; }
@@ -151,6 +155,7 @@ export class ReaderEngine {
     this.mode = this.fixedLayout && mode !== 'single-scroll' ? 'spread' : mode;
     this.teardownRendition();
     host.innerHTML = '';
+    await this.waitForLayout(host);
     const scrolled = isScrollMode(this.mode);
     const opts: any = {
       width: '100%', height: '100%',
@@ -186,9 +191,21 @@ export class ReaderEngine {
       if (this.destroyed || !this.rendition) return;
       const r = this.host.getBoundingClientRect();
       try { this.rendition.resize(Math.floor(r.width), Math.floor(r.height)); } catch { /* ignore mid-teardown resize */ }
+      // The first layout can happen while the window is still being sized, so re-anchor once the size settles.
+      clearTimeout(this.settleTimer);
+      this.settleTimer = window.setTimeout(() => {
+        if (!this.destroyed) this.rendition?.display(this.lastLoc?.cfi ?? target ?? undefined).catch(() => { /* keep current view */ });
+      }, SETTLE_MS);
     });
     this.ro.observe(host);
     this.generateLocations();
+  }
+
+  /** Waits (briefly) for the host to have a non-zero size, as it has none while the window is still opening. */
+  private async waitForLayout(host: HTMLElement) {
+    for (let i = 0; i < LAYOUT_WAIT_TRIES && (host.clientWidth === 0 || host.clientHeight === 0); i++) {
+      await new Promise((r) => setTimeout(r, LAYOUT_WAIT_MS));
+    }
   }
 
   private generateLocations() {
@@ -554,6 +571,7 @@ img,svg{max-width:100%;}
     this.chapterSpread?.dispose();
     this.chapterSpread = null;
     this.ro?.disconnect();
+    clearTimeout(this.settleTimer);
     if (this.rendition) { try { this.rendition.destroy(); } catch { /* ignore */ } this.rendition = null; }
   }
 

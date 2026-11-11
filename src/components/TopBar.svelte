@@ -14,7 +14,7 @@
   import { AutoHide } from '../app/autohide.svelte';
   import { READER_MODES, type ReaderMode } from '../settings/defaults';
 
-  const ICON_PX = 20;
+  const ICON_PX = 16;
 
   const MODE_LABEL: Record<ReaderMode, string> = {
     spread: 'Two-page spread', 'single-scroll': 'Single page, scrolling', continuous: 'Continuous scroll', 'chapter-spread': 'Chapter spreads'

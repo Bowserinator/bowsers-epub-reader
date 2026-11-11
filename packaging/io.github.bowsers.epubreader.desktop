@@ -7,3 +7,4 @@ Icon=io.github.bowsers.epubreader
 MimeType=application/epub+zip;
 Categories=Office;Viewer;
 Terminal=false
+StartupWMClass=bowsers_epub_reader

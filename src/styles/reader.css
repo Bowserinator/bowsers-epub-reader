@@ -1,10 +1,10 @@
-.reader { position: absolute; inset: 0; display: grid; grid-template-rows: 28px minmax(0, 1fr) 28px; background: var(--backdrop); padding: 0 var(--outer); }
-.shells { position: absolute; inset: 0; padding: 0 var(--outer); pointer-events: none; display: flex; justify-content: center; }
+.reader { position: absolute; inset: 0; display: grid; grid-template-rows: 28px minmax(0, 1fr) 28px; background: var(--backdrop); padding: var(--outer-v) var(--outer); }
+.shells { position: absolute; inset: 0; padding: var(--outer-v) var(--outer); pointer-events: none; display: flex; justify-content: center; }
 .shells .page { flex: 1 1 0; background: var(--bg); }
 .shells .page.shadow { box-shadow: 0 1px 10px var(--shadow); }
 .shells .gap { flex: 0 0 var(--gap); }
 .hdr, .ftr { position: relative; z-index: 1; display: flex; align-items: center; color: var(--muted); font-size: 12px; pointer-events: none; }
 .hdr .slot, .ftr .slot { flex: 1 1 0; text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 0 var(--inset); }
-.stagewrap { position: relative; z-index: 1; min-height: 0; min-width: 0; padding: 0 var(--inset); }
+.stagewrap { position: relative; z-index: 1; min-height: 0; min-width: 0; padding: 0 var(--stage-pad); margin: 0 calc(var(--stage-bleed) * -1); }
 .stage { height: 100%; width: 100%; }
 .stage > div { height: 100%; }

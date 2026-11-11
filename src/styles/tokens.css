@@ -1,7 +1,8 @@
 :root {
   --ui-font: 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
-  --topbar-h: 44px;
-  --bottombar-h: 60px;
+  --topbar-h: 35px;
+  --bottombar-h: 55px;
+  --topbar-target: 32px;
   --radius: 0;
   --target: 40px;
   --control-h: 36px;

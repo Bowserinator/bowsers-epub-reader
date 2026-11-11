@@ -50,6 +50,9 @@ pub fn run(book: Option<epub::BookInfo>) {
             }));
             if let Some(w) = app.get_webview_window("main") {
                 let _ = w.set_title(&title);
+                if let Some(icon) = app.default_window_icon() {
+                    let _ = w.set_icon(icon.clone());
+                }
                 window_state::restore_and_track(&w, data_dir);
             }
             Ok(())

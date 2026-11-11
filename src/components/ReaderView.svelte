@@ -3,7 +3,7 @@
   import { app } from '../app/app.svelte';
   import { onWheel } from '../app/actions';
   import { attachSwipe, edgeSide, wheelPager } from '../reader/touch';
-  import { PAGE_GAP, PAGE_OUTER, isScrollMode } from '../settings/defaults';
+  import { PAGE_BAR_GAP, PAGE_GAP, PAGE_OUTER, isScrollMode } from '../settings/defaults';
 
   let host: HTMLElement;
   let reader: HTMLElement;
@@ -15,6 +15,9 @@
   const e = $derived(app.effective);
   const two = $derived(app.twoPageActive);
   const gapPx = $derived(PAGE_GAP[e.pageSurface]);
+  // Between separate page surfaces the text columns' own padding already supplies the margin, so the stage
+  // extends past the surfaces to keep the inner margin equal to the outer one.
+  const bleedPx = $derived(two ? gapPx / 2 : 0);
   const scrolling = $derived(isScrollMode(app.effectiveMode));
   const loc = $derived(app.loc);
   const numeric = $derived(/^\d+$/.test(app.pageLabel));
@@ -39,7 +42,7 @@
 
 <div class="reader" bind:this={reader} use:onWheel={pager} onclick={marginClick} role="presentation"
   style:touch-action={scrolling ? null : 'pan-y pinch-zoom'}
-  style="--gap:{gapPx}px;--outer:{PAGE_OUTER}px;--inset:{e.pageMarginPx}px">
+  style="--gap:{gapPx}px;--outer:{PAGE_OUTER}px;--outer-v:{e.autoHideControls ? PAGE_OUTER : PAGE_BAR_GAP}px;--inset:{e.pageMarginPx}px;--stage-pad:{bleedPx ? 0 : e.pageMarginPx}px;--stage-bleed:{bleedPx}px">
   <div class="shells" aria-hidden="true">
     {#if two}
       <div class="page" class:shadow={e.pageSurface === 'gap-shadow'}></div>

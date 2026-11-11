@@ -18,6 +18,8 @@ export const isSpreadMode = (m: ReaderMode) => m === 'spread' || m === 'chapter-
 
 export const PAGE_GAP: Record<(typeof PAGE_SURFACES)[number], number> = { gap: 12, 'gap-shadow': 12, 'no-gap': 0 };
 export const PAGE_OUTER = 12;
+/** Gap between the pages and the toolbars when the toolbars are always shown. */
+export const PAGE_BAR_GAP = 4;
 export const FONT_SIZE_MIN = 8;
 export const FONT_SIZE_MAX = 32;
 export const LINE_HEIGHT_MIN = 1;
@@ -79,7 +81,7 @@ export interface ReaderSettings {
 export const DEFAULT_SETTINGS: ReaderSettings = {
   theme: 'auto',
   fontFamilyId: 'noto-serif',
-  fontSizePx: 18,
+  fontSizePx: 12,
   lineHeight: 1.5,
   textAlign: 'left',
   pageMarginPx: 24,

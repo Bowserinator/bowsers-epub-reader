@@ -1,6 +1,6 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
-  "productName": "Bowser’s Epub Reader",
+  "productName": "bowsers-epub-reader",
   "version": "0.1.0",
   "identifier": "io.github.bowsers.epubreader",
   "build": {
@@ -10,6 +10,7 @@
     "frontendDist": "../dist"
   },
   "app": {
+    "enableGTKAppId": true,
     "windows": [
       {
         "label": "main",
@@ -42,6 +43,10 @@
         "depends": ["libwebkit2gtk-4.1-0", "libgtk-3-0", "libfontconfig1"],
         "files": {
           "/usr/share/applications/io.github.bowsers.epubreader.desktop": "../packaging/io.github.bowsers.epubreader.desktop",
+          "/usr/share/icons/hicolor/32x32/apps/io.github.bowsers.epubreader.png": "icons/32x32.png",
+          "/usr/share/icons/hicolor/128x128/apps/io.github.bowsers.epubreader.png": "icons/128x128.png",
+          "/usr/share/icons/hicolor/256x256/apps/io.github.bowsers.epubreader.png": "icons/128x128@2x.png",
+          "/usr/share/icons/hicolor/512x512/apps/io.github.bowsers.epubreader.png": "icons/icon.png",
           "/usr/share/metainfo/io.github.bowsers.epubreader.metainfo.xml": "../packaging/io.github.bowsers.epubreader.metainfo.xml"
         }
       },
@@ -49,6 +54,10 @@
         "depends": ["webkit2gtk4.1", "gtk3", "fontconfig"],
         "files": {
           "/usr/share/applications/io.github.bowsers.epubreader.desktop": "../packaging/io.github.bowsers.epubreader.desktop",
+          "/usr/share/icons/hicolor/32x32/apps/io.github.bowsers.epubreader.png": "icons/32x32.png",
+          "/usr/share/icons/hicolor/128x128/apps/io.github.bowsers.epubreader.png": "icons/128x128.png",
+          "/usr/share/icons/hicolor/256x256/apps/io.github.bowsers.epubreader.png": "icons/128x128@2x.png",
+          "/usr/share/icons/hicolor/512x512/apps/io.github.bowsers.epubreader.png": "icons/icon.png",
           "/usr/share/metainfo/io.github.bowsers.epubreader.metainfo.xml": "../packaging/io.github.bowsers.epubreader.metainfo.xml"
         }
       }

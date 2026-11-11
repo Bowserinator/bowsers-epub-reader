@@ -68,7 +68,7 @@
 {:else if app.phase === 'error'}
   <ErrorView />
 {:else}
-  <div class="shell">
+  <div class="shell" class:autohide={app.effective.autoHideControls}>
     <TopBar />
     <div class="middle">
       {#if app.drawer}<Drawer />{/if}

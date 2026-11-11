@@ -104,7 +104,7 @@
 
 <style>
   .content { position: relative; }
-  .sliderwrap { position: relative; padding-top: 6px; }
+  .sliderwrap { position: relative; padding-top: 1px; }
   .track { position: relative; height: 22px; cursor: pointer; touch-action: none; border-radius: 0; }
   .rail { position: absolute; left: 0; right: 0; top: 9px; height: 4px; background: var(--border); border-radius: 2px; }
   .fill { position: absolute; left: 0; top: 9px; height: 4px; background: var(--accent); border-radius: 2px; }
